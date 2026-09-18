@@ -3,7 +3,7 @@
 # update-cask — (re)generate Casks/<token>.rb from a GitHub release of one of
 # the n14395 apps.
 #
-#   bin/update-cask <token> [vN.N] [--desc "One-line description"]
+#   bin/update-cask <token> [vN.N] [--desc "One-line description"] [--push]
 #
 # <token> is the cask token, which is also the GitHub repository name:
 # speedy-fan → github.com/n14395/speedy-fan → Casks/speedy-fan.rb.
@@ -12,8 +12,11 @@
 # Everything in the cask except `desc` is derived from the release artifact:
 # the .dmg's sha256, the .app inside it, its bundle identifier, minimum macOS
 # version, CPU architectures, sandbox entitlements and whether it embeds the
-# Sparkle updater. `desc` comes from --desc, or is preserved from the existing
-# cask when --desc is not given.
+# Sparkle updater. `desc` comes from --desc, else from the existing cask, else
+# from the GitHub repository's description (gh repo edit <repo> -d "…").
+#
+# --push commits the cask and pushes this repository, so `brew upgrade` sees
+# the new version; each app's `build.sh --publish` calls it that way.
 #
 # Requires: gh (logged in), hdiutil, plutil, codesign, lipo, python3.
 
@@ -26,12 +29,13 @@ die() { echo "update-cask: $*" >&2; exit 1; }
 
 cd "$(dirname "$0")/.."
 
-token="" tag="" desc="" desc_from_cli=0
+token="" tag="" desc="" desc_from_cli=0 push=0
 while [[ $# -gt 0 ]]; do
     case $1 in
         -h|--help) usage; exit 0 ;;
         --desc) [[ $# -ge 2 ]] || die "--desc needs a value"; desc=$2; desc_from_cli=1; shift ;;
         --desc=*) desc=${1#*=}; desc_from_cli=1 ;;
+        --push) push=1 ;;
         -*) die "unknown option: $1" ;;
         *)
             if [[ -z $token ]]; then token=$1
@@ -48,11 +52,24 @@ done
 repo="$OWNER/$token"
 cask="Casks/$token.rb"
 
+if [[ $push -eq 1 ]]; then
+    # This directory itself must be the clone, not merely sit inside some
+    # enclosing repository, or the commit would land in the wrong place.
+    [[ "$(git rev-parse --show-toplevel 2>/dev/null)" == "$(pwd -P)" ]] \
+        || die "$PWD is not the top level of a git repository — cannot commit the cask (clone github.com/$OWNER/homebrew-tap here, or drop --push)"
+    git remote get-url origin >/dev/null 2>&1 \
+        || die "$PWD has no 'origin' remote — cannot push"
+fi
+
 # ---------------------------------------------------------------- description
 if [[ -z $desc && -f $cask ]]; then
     desc=$(sed -n 's/^  desc "\(.*\)"$/\1/p' "$cask")
 fi
-[[ -n $desc ]] || die "no description for $token: pass --desc \"…\" (the only thing not derived from the release)"
+if [[ -z $desc ]]; then
+    desc=$(gh repo view "$repo" --json description --jq .description 2>/dev/null || true)
+    [[ -n $desc ]] && { desc_from_cli=1; echo "==> desc taken from the GitHub description of $repo"; }
+fi
+[[ -n $desc ]] || die "no description for $token: pass --desc \"…\" or set one on GitHub (gh repo edit $repo -d \"…\")"
 if [[ $desc_from_cli -eq 1 ]]; then
     desc=${desc//\\/\\\\}
     desc=${desc//\"/\\\"}
@@ -214,3 +231,14 @@ fi
 } > "$cask.tmp"
 mv "$cask.tmp" "$cask"
 echo "    wrote $cask"
+
+# -------------------------------------------------------------------- push
+[[ $push -eq 1 ]] || exit 0
+git add -- "$cask"
+if git diff --cached --quiet -- "$cask"; then
+    echo "    $cask is unchanged; nothing to commit"
+    exit 0
+fi
+git commit -q -m "$token $version" -- "$cask"
+git push -q origin HEAD
+echo "    committed and pushed: $token $version"

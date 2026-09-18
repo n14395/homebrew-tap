@@ -38,11 +38,20 @@ major versions, so the two 14.6 minimums are declared as macOS 14.
 ## Maintaining
 
 Every Cask is generated from the app's GitHub release by `bin/update-cask`.
-The cask token is the repository name.
+The cask token is the repository name. Normally nothing here is run by hand:
+each app's `./build.sh --publish vN.N` calls
+`bin/update-cask <repo> vN.N --push` once the GitHub release exists, which
+rewrites the Cask, commits it and pushes this repository. The build scripts
+find the tap at `~/build/homebrew-tap`, or wherever `HOMEBREW_TAP_DIR` points,
+and refuse to publish, before tagging anything, if it is missing or is not a
+git clone with an `origin`.
+
+By hand, for a Cask that needs regenerating outside a release:
 
 ```sh
 bin/update-cask speedy-fan               # regenerate from the latest release
 bin/update-cask speedy-fan v0.4          # …or from a specific release
+bin/update-cask speedy-fan --push        # …and commit and push the result
 bin/update-cask new-app --desc "…"       # first Cask for a newly released app
 ```
 
@@ -50,15 +59,19 @@ The script downloads the release's `.dmg`, records its SHA-256, mounts it and
 reads the `.app` inside: bundle identifier, minimum macOS version, CPU
 architectures, sandbox entitlements, app extensions and whether Sparkle is
 embedded. From those it writes the whole Cask, including `depends_on`,
-`uninstall quit:` and the `zap` list. The one hand-written field is `desc`,
-which is kept from the existing Cask unless `--desc` is given. It needs `gh`
-logged in to the n14395 account.
+`uninstall quit:` and the `zap` list. The one hand-written field is `desc`:
+`--desc` if given, else the existing Cask's, else the repository's description
+on GitHub (`gh repo edit <repo> -d "…"`). That last fallback is how a
+brand-new app gets its first Cask from `build.sh` with no manual step; the
+build script checks for it before tagging. Homebrew wants the text under 80
+characters, with no app name, leading article, platform word or trailing full
+stop. The script needs `gh` logged in to the n14395 account.
 
 The release layout it expects is the one every `build.sh --publish vN.N`
 produces: tag `vN.N`, one asset named `AppName-N.N.dmg`, an `AppName.app` at
 the top level of the image.
 
-After regenerating, check and commit:
+To check a Cask by hand:
 
 ```sh
 brew style --cask n14395/tap
