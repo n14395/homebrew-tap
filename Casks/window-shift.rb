@@ -1,6 +1,6 @@
 cask "window-shift" do
-  version "0.3"
-  sha256 "f163b47a9316c60596a69a98d186f746369344940dbd615a868cd464d1791e56"
+  version "0.4"
+  sha256 "5bbd5dbba724535123a1f39cfc933b6950a602c40f760fb9d3697302fc5ba335"
 
   url "https://github.com/n14395/window-shift/releases/download/v#{version}/WindowShift-#{version}.dmg"
   name "WindowShift"
@@ -18,14 +18,14 @@ cask "window-shift" do
 
   app "WindowShift.app"
 
-  uninstall quit: "dev.nwf.WindowShift"
+  uninstall quit: "com.n14395.WindowShift"
 
   zap trash: [
-    "~/Library/Application Support/dev.nwf.WindowShift",
+    "~/Library/Application Support/com.n14395.WindowShift",
     "~/Library/Application Support/WindowShift",
-    "~/Library/Caches/dev.nwf.WindowShift",
-    "~/Library/HTTPStorages/dev.nwf.WindowShift",
-    "~/Library/Preferences/dev.nwf.WindowShift.plist",
-    "~/Library/Saved Application State/dev.nwf.WindowShift.savedState",
+    "~/Library/Caches/com.n14395.WindowShift",
+    "~/Library/HTTPStorages/com.n14395.WindowShift",
+    "~/Library/Preferences/com.n14395.WindowShift.plist",
+    "~/Library/Saved Application State/com.n14395.WindowShift.savedState",
   ]
 end
