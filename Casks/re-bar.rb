@@ -1,6 +1,6 @@
 cask "re-bar" do
-  version "1.1"
-  sha256 "ececa18bb38eb0915286525095870eda172858a7f47b75c9af1bfcf1bd67c0f0"
+  version "1.2"
+  sha256 "a822957464c118f0016a811e1efa761a5314ae87cc8c1350847cf43f39d59f6a"
 
   url "https://github.com/n14395/re-bar/releases/download/v#{version}/ReBar-#{version}.dmg"
   name "ReBar"
@@ -18,14 +18,14 @@ cask "re-bar" do
 
   app "ReBar.app"
 
-  uninstall quit: "com.n14395.re-bar"
+  uninstall quit: "com.n14395.ReBar"
 
   zap trash: [
-    "~/Library/Application Support/com.n14395.re-bar",
+    "~/Library/Application Support/com.n14395.ReBar",
     "~/Library/Application Support/ReBar",
-    "~/Library/Caches/com.n14395.re-bar",
-    "~/Library/HTTPStorages/com.n14395.re-bar",
-    "~/Library/Preferences/com.n14395.re-bar.plist",
-    "~/Library/Saved Application State/com.n14395.re-bar.savedState",
+    "~/Library/Caches/com.n14395.ReBar",
+    "~/Library/HTTPStorages/com.n14395.ReBar",
+    "~/Library/Preferences/com.n14395.ReBar.plist",
+    "~/Library/Saved Application State/com.n14395.ReBar.savedState",
   ]
 end
