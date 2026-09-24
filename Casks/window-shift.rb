@@ -1,6 +1,6 @@
 cask "window-shift" do
-  version "0.2"
-  sha256 "832cdcfbec8bd0b2239be9169163f037800343a5acd8c4ca651b564b8cb0dc11"
+  version "0.3"
+  sha256 "f163b47a9316c60596a69a98d186f746369344940dbd615a868cd464d1791e56"
 
   url "https://github.com/n14395/window-shift/releases/download/v#{version}/WindowShift-#{version}.dmg"
   name "WindowShift"
@@ -12,6 +12,7 @@ cask "window-shift" do
     strategy :github_latest
   end
 
+  auto_updates true
   depends_on arch: :arm64
   depends_on macos: :ventura
 
