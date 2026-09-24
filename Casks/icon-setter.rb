@@ -4,7 +4,7 @@ cask "icon-setter" do
 
   url "https://github.com/n14395/icon-setter/releases/download/v#{version}/IconSetter-#{version}.dmg"
   name "Icon Setter"
-  desc "A small native macOS app for giving folders and files custom icons."
+  desc "Give folders and files custom icons"
   homepage "https://github.com/n14395/icon-setter"
 
   livecheck do

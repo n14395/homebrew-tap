@@ -18,7 +18,7 @@ and support files.
 | Cask | Installs | What it is | Needs |
 | --- | --- | --- | --- |
 | `clipboard-menu` | ClipboardMenu.app | Menu bar clipboard history and snippets manager | macOS 14.6 |
-| `folder-rules` | FolderRules.app | Rule-based folder automation: rename, move, tag, OCR and convert files | macOS 14 |
+| `icon-setter` | IconSetter.app | Give folders and files custom icons | macOS 15 |
 | `little-kanban` | LittleKanban.app | Multi-board Kanban with a single global inbox | macOS 26 |
 | `local-music-gen` | LocalMusicGen.app | Run open music-AI models locally to generate, separate, transcribe and restyle | macOS 14 |
 | `more-corners` | MoreCorners.app | Hot corners with per-modifier overrides and dozens of extra actions | macOS 13 |
