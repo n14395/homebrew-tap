@@ -1,6 +1,6 @@
 cask "local-music-gen" do
-  version "1.1"
-  sha256 "491562ed4059a4e25d74550d39fab2c05ccb4a62e1b0864dd91368ee6af6b006"
+  version "1.2"
+  sha256 "480b4430bd51127723d171c292a6fb0b747d2c7eeec8d72641211512b0429b60"
 
   url "https://github.com/n14395/local-music-gen/releases/download/v#{version}/LocalMusicGen-#{version}.dmg"
   name "LocalMusicGen"
@@ -18,14 +18,14 @@ cask "local-music-gen" do
 
   app "LocalMusicGen.app"
 
-  uninstall quit: "com.n14395.local-music-gen"
+  uninstall quit: "com.n14395.LocalMusicGen"
 
   zap trash: [
-    "~/Library/Application Support/com.n14395.local-music-gen",
+    "~/Library/Application Support/com.n14395.LocalMusicGen",
     "~/Library/Application Support/LocalMusicGen",
-    "~/Library/Caches/com.n14395.local-music-gen",
-    "~/Library/HTTPStorages/com.n14395.local-music-gen",
-    "~/Library/Preferences/com.n14395.local-music-gen.plist",
-    "~/Library/Saved Application State/com.n14395.local-music-gen.savedState",
+    "~/Library/Caches/com.n14395.LocalMusicGen",
+    "~/Library/HTTPStorages/com.n14395.LocalMusicGen",
+    "~/Library/Preferences/com.n14395.LocalMusicGen.plist",
+    "~/Library/Saved Application State/com.n14395.LocalMusicGen.savedState",
   ]
 end
