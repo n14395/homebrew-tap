@@ -1,6 +1,6 @@
 cask "speedy-launcher" do
-  version "1.7.0"
-  sha256 "a06de5e3c8bdb0361348337d1c7d5bbac358e2563d2ede9cf3f64af3873f5de7"
+  version "1.8"
+  sha256 "deaa05e9186a8bba8dff55f396abfdfb0e76f4f4b0dcec2eccfab7f344ce4e51"
 
   url "https://github.com/n14395/speedy-launcher/releases/download/v#{version}/SpeedyLauncher-#{version}.dmg"
   name "SpeedyLauncher"
@@ -12,6 +12,7 @@ cask "speedy-launcher" do
     strategy :github_latest
   end
 
+  auto_updates true
   depends_on arch: :arm64
   depends_on macos: :sonoma
 
