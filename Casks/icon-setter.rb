@@ -1,6 +1,6 @@
 cask "icon-setter" do
-  version "0.1"
-  sha256 "0e3538b00a4563acc12c2e71710070071af6a347cdc0c6c18185c8814dec331d"
+  version "0.2"
+  sha256 "40366ec88d3a7160817ef24fc00b5b38ccd78c9637560e8388f673932ff78d2d"
 
   url "https://github.com/n14395/icon-setter/releases/download/v#{version}/IconSetter-#{version}.dmg"
   name "Icon Setter"
