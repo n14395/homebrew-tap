@@ -1,6 +1,6 @@
 cask "more-corners" do
-  version "0.3"
-  sha256 "27e7b3c57428518d83f7e880a45b55cc9da744e73cb785e46ce74b42550dad1c"
+  version "0.4"
+  sha256 "c7944c02ecd83b25d44639f63ae6088fbb70644c598bc139c1bdf5e93ed5ea32"
 
   url "https://github.com/n14395/more-corners/releases/download/v#{version}/MoreCorners-#{version}.dmg"
   name "MoreCorners"
@@ -18,14 +18,14 @@ cask "more-corners" do
 
   app "MoreCorners.app"
 
-  uninstall quit: "dev.nwf.MoreCorners"
+  uninstall quit: "com.n14395.MoreCorners"
 
   zap trash: [
-    "~/Library/Application Support/dev.nwf.MoreCorners",
+    "~/Library/Application Support/com.n14395.MoreCorners",
     "~/Library/Application Support/MoreCorners",
-    "~/Library/Caches/dev.nwf.MoreCorners",
-    "~/Library/HTTPStorages/dev.nwf.MoreCorners",
-    "~/Library/Preferences/dev.nwf.MoreCorners.plist",
-    "~/Library/Saved Application State/dev.nwf.MoreCorners.savedState",
+    "~/Library/Caches/com.n14395.MoreCorners",
+    "~/Library/HTTPStorages/com.n14395.MoreCorners",
+    "~/Library/Preferences/com.n14395.MoreCorners.plist",
+    "~/Library/Saved Application State/com.n14395.MoreCorners.savedState",
   ]
 end
