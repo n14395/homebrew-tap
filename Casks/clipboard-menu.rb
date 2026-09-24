@@ -1,6 +1,6 @@
 cask "clipboard-menu" do
-  version "1.11.0"
-  sha256 "927351df037dfdbbf74cd7aad4a697b5d3097fdb78a2103c5ee57084f78ffe02"
+  version "1.12"
+  sha256 "eaec34a24374ea156837add12a2de1bfcf773fea95d2659931363c98085384fc"
 
   url "https://github.com/n14395/clipboard-menu/releases/download/v#{version}/ClipboardMenu-#{version}.dmg"
   name "ClipboardMenu"
@@ -12,6 +12,7 @@ cask "clipboard-menu" do
     strategy :github_latest
   end
 
+  auto_updates true
   depends_on macos: :sonoma
 
   app "ClipboardMenu.app"
