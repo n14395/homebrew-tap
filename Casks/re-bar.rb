@@ -1,6 +1,6 @@
 cask "re-bar" do
-  version "1.0"
-  sha256 "7e199fc9c01bfc6b51fe2dcef5b7a811eb03885f4db7b015ad15ec3423092260"
+  version "1.1"
+  sha256 "ececa18bb38eb0915286525095870eda172858a7f47b75c9af1bfcf1bd67c0f0"
 
   url "https://github.com/n14395/re-bar/releases/download/v#{version}/ReBar-#{version}.dmg"
   name "ReBar"
@@ -12,6 +12,7 @@ cask "re-bar" do
     strategy :github_latest
   end
 
+  auto_updates true
   depends_on arch: :arm64
   depends_on macos: :sequoia
 
