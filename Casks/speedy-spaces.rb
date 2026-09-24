@@ -1,6 +1,6 @@
 cask "speedy-spaces" do
-  version "0.4"
-  sha256 "3abf3a47299b7b5f89d629087266f958ce341a2c4da3a7a568d59f96bbd23319"
+  version "0.5"
+  sha256 "c4f736ca9fff8487ec55a6c4d07e7aee56c9f84d9363dc6c2834bd57efd7fa8e"
 
   url "https://github.com/n14395/speedy-spaces/releases/download/v#{version}/SpeedySpaces-#{version}.dmg"
   name "SpeedySpaces"
@@ -18,14 +18,14 @@ cask "speedy-spaces" do
 
   app "SpeedySpaces.app"
 
-  uninstall quit: "com.speedyspaces.SpeedySpaces"
+  uninstall quit: "com.n14395.SpeedySpaces"
 
   zap trash: [
-    "~/Library/Application Support/com.speedyspaces.SpeedySpaces",
+    "~/Library/Application Support/com.n14395.SpeedySpaces",
     "~/Library/Application Support/SpeedySpaces",
-    "~/Library/Caches/com.speedyspaces.SpeedySpaces",
-    "~/Library/HTTPStorages/com.speedyspaces.SpeedySpaces",
-    "~/Library/Preferences/com.speedyspaces.SpeedySpaces.plist",
-    "~/Library/Saved Application State/com.speedyspaces.SpeedySpaces.savedState",
+    "~/Library/Caches/com.n14395.SpeedySpaces",
+    "~/Library/HTTPStorages/com.n14395.SpeedySpaces",
+    "~/Library/Preferences/com.n14395.SpeedySpaces.plist",
+    "~/Library/Saved Application State/com.n14395.SpeedySpaces.savedState",
   ]
 end
