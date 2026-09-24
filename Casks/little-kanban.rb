@@ -1,6 +1,6 @@
 cask "little-kanban" do
-  version "1.0"
-  sha256 "cc48cf4b13edec0286b39aa6642cec5774df190d7276fe67a436dd2d3826c02d"
+  version "1.1"
+  sha256 "3b352df3e9edbc37104658c04e05f677a2b5364ecd76decef2a835ad701bab0f"
 
   url "https://github.com/n14395/little-kanban/releases/download/v#{version}/LittleKanban-#{version}.dmg"
   name "Little Kanban"
@@ -12,6 +12,7 @@ cask "little-kanban" do
     strategy :github_latest
   end
 
+  auto_updates true
   depends_on macos: :tahoe
 
   app "LittleKanban.app"
