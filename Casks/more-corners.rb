@@ -1,6 +1,6 @@
 cask "more-corners" do
-  version "0.2"
-  sha256 "c6842d545ca86e14ddb569a6f85700e888ffac2fe5b023707dfe7fb0db27708e"
+  version "0.3"
+  sha256 "27e7b3c57428518d83f7e880a45b55cc9da744e73cb785e46ce74b42550dad1c"
 
   url "https://github.com/n14395/more-corners/releases/download/v#{version}/MoreCorners-#{version}.dmg"
   name "MoreCorners"
@@ -12,6 +12,7 @@ cask "more-corners" do
     strategy :github_latest
   end
 
+  auto_updates true
   depends_on arch: :arm64
   depends_on macos: :ventura
 
