@@ -1,6 +1,6 @@
 cask "speedy-fan" do
-  version "0.3"
-  sha256 "4345649bdb31c5108aa97317316905d83477cb20b1f5f6519ac4a607c694eb72"
+  version "0.4"
+  sha256 "08b2694548ebbef98fffc0c0d16753b146c9f3509087fa2d0bd71effc0bcdbfb"
 
   url "https://github.com/n14395/speedy-fan/releases/download/v#{version}/SpeedyFan-#{version}.dmg"
   name "SpeedyFan"
@@ -12,6 +12,7 @@ cask "speedy-fan" do
     strategy :github_latest
   end
 
+  auto_updates true
   depends_on arch: :arm64
   depends_on macos: :ventura
 
