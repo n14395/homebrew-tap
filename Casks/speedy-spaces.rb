@@ -1,6 +1,6 @@
 cask "speedy-spaces" do
-  version "0.3"
-  sha256 "ff093614add487d64f14dfd3a8ee8ea1d9fbcef5ed06000f46b752fd39e26e16"
+  version "0.4"
+  sha256 "3abf3a47299b7b5f89d629087266f958ce341a2c4da3a7a568d59f96bbd23319"
 
   url "https://github.com/n14395/speedy-spaces/releases/download/v#{version}/SpeedySpaces-#{version}.dmg"
   name "SpeedySpaces"
@@ -12,6 +12,7 @@ cask "speedy-spaces" do
     strategy :github_latest
   end
 
+  auto_updates true
   depends_on arch: :arm64
   depends_on macos: :sonoma
 
