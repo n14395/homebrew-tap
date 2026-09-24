@@ -1,6 +1,6 @@
 cask "re-title" do
-  version "1.10.0"
-  sha256 "55ff37a0229bb7fccf8f586d7376a40f5c50209ff3072f338d473a778e75ee03"
+  version "1.11"
+  sha256 "8dfa0ded502953a094099c3b0decd949775e3606030d3167369e8adb5e32fb3c"
 
   url "https://github.com/n14395/re-title/releases/download/v#{version}/ReTitle-#{version}.dmg"
   name "ReTitle"
@@ -12,6 +12,7 @@ cask "re-title" do
     strategy :github_latest
   end
 
+  auto_updates true
   depends_on arch: :arm64
   depends_on macos: :sonoma
 
