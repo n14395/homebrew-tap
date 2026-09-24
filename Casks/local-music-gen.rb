@@ -1,6 +1,6 @@
 cask "local-music-gen" do
-  version "1.0"
-  sha256 "e5a530d8249ea52e7f1ff0984eb96ca31037e8dd78f5a9aae6fb769aacf6c90c"
+  version "1.1"
+  sha256 "491562ed4059a4e25d74550d39fab2c05ccb4a62e1b0864dd91368ee6af6b006"
 
   url "https://github.com/n14395/local-music-gen/releases/download/v#{version}/LocalMusicGen-#{version}.dmg"
   name "LocalMusicGen"
@@ -12,6 +12,7 @@ cask "local-music-gen" do
     strategy :github_latest
   end
 
+  auto_updates true
   depends_on arch: :arm64
   depends_on macos: :sonoma
 
