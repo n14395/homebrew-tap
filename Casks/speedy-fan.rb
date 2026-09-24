@@ -1,6 +1,6 @@
 cask "speedy-fan" do
-  version "0.4"
-  sha256 "08b2694548ebbef98fffc0c0d16753b146c9f3509087fa2d0bd71effc0bcdbfb"
+  version "0.5"
+  sha256 "80ad77a1b7f0fba1734cc77d691d5eecfd23709f827e9796808fad809c4fabf5"
 
   url "https://github.com/n14395/speedy-fan/releases/download/v#{version}/SpeedyFan-#{version}.dmg"
   name "SpeedyFan"
@@ -18,14 +18,14 @@ cask "speedy-fan" do
 
   app "SpeedyFan.app"
 
-  uninstall quit: "com.speedyfan.app"
+  uninstall quit: "com.n14395.SpeedyFan"
 
   zap trash: [
-    "~/Library/Application Support/com.speedyfan.app",
+    "~/Library/Application Support/com.n14395.SpeedyFan",
     "~/Library/Application Support/SpeedyFan",
-    "~/Library/Caches/com.speedyfan.app",
-    "~/Library/HTTPStorages/com.speedyfan.app",
-    "~/Library/Preferences/com.speedyfan.app.plist",
-    "~/Library/Saved Application State/com.speedyfan.app.savedState",
+    "~/Library/Caches/com.n14395.SpeedyFan",
+    "~/Library/HTTPStorages/com.n14395.SpeedyFan",
+    "~/Library/Preferences/com.n14395.SpeedyFan.plist",
+    "~/Library/Saved Application State/com.n14395.SpeedyFan.savedState",
   ]
 end
