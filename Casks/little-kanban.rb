@@ -1,6 +1,6 @@
 cask "little-kanban" do
-  version "1.1"
-  sha256 "3b352df3e9edbc37104658c04e05f677a2b5364ecd76decef2a835ad701bab0f"
+  version "1.2"
+  sha256 "335f1400631047eb41d5c9d79202f0bec6e8d1ce8c3abba19ad7a2519ffb924e"
 
   url "https://github.com/n14395/little-kanban/releases/download/v#{version}/LittleKanban-#{version}.dmg"
   name "Little Kanban"
